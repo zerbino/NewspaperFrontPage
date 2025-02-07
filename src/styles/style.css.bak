@@ -1,0 +1,80 @@
+body {
+	background-color: grey;
+}
+
+div {
+	box-sizing: border-box;	
+}
+
+.page {
+  width: 21cm;
+  height: 29.7cm;
+  margin: auto;
+  overflow: auto;
+  background-color: wheat;
+  /*background-image: url("./fond.jpg");*/
+  overflow: hidden;
+}
+
+.article-container {
+  padding: 10px 10px 20px 30px;
+  width: 21cm;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.demi-bandeau {
+	height: 136px;
+	flex: 1 0 50%;
+}
+
+.demi-bandeau img, .manchette img, .annonce img {
+/* height and width to 100% to fit the container */
+	height: 100%;
+	width: 100%;
+/* object fit: none to avoid redimension. Everything outside of the container (and img) is hidden*/
+	object-fit: none;
+}
+
+.ventre img {
+/* height and width to 100% to fit the container */
+	height: 100%;
+	width: 100%;
+/* object fit: none to avoid redimension. Everything outside of the container (and img) is hidden*/
+	object-fit: contain;
+}
+
+.manchette {
+	height: 139px;
+	flex : 1 0 50%;
+}
+
+.ventre {
+	width: 82%;
+	height: 633px;
+}
+
+.sous-tribune-container {
+	width: 18%;
+	height: 633px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.sous-tribune {
+	width: 100%;
+}
+
+.sous-tribune img {
+	/* the following property-value set makes the img element as wide as its container */
+	width: 100%;
+	/* And the following property-value set displays the image to its original size, but hides everything outside the img element (and img's container) */
+	object-fit: none;
+}
+
+.annonce {
+	width: 100%;
+	height: 184px;
+}
