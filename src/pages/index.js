@@ -1,57 +1,63 @@
 
 import { useState } from "react";
 
-function SousTribuneDroite({ sousTribunesDroiteList, sousTribuneDroiteSelectedIndex, nextSousTribuneElement }) {
+function SousTribune({ sousTribunesList, sousTribuneSelectedIndex, nextSousTribuneElement, className }) {
 	
   function sousTribuneClicked() {
 	nextSousTribuneElement();
   }	  
 	
   return (
-    <div class="sous-tribune">
-      <img src={sousTribunesDroiteList[sousTribuneDroiteSelectedIndex].imgSrc} onClick={sousTribuneClicked} />
+    <div className={className}>
+      <img src={sousTribunesList[sousTribuneSelectedIndex].imgSrc} onClick={sousTribuneClicked} />
     </div>
   );
 }
 
-function SousTribunesDroite({setSousTribunesDroiteSelectedIndex, sousTribunesDroiteSelectedIndex, sousTribunesDroiteList}) {
+function SousTribunes({setSousTribunesSelectedIndex, sousTribunesSelectedIndex, sousTribunesList, className}) {
 
   function nextSousTribuneElement(sousTribuneNumber) {
-	  const previousSelectedElementIndex = sousTribunesDroiteSelectedIndex[sousTribuneNumber];
+	  const previousSelectedElementIndex = sousTribunesSelectedIndex[sousTribuneNumber];
 	  let nextSelectedElementIndex = previousSelectedElementIndex;
 	  let iteration = 0;
-	  while(iteration < sousTribunesDroiteList.length - 1 && nextSelectedElementIndex == previousSelectedElementIndex) {
-		const nextSelectedElementIndexProposal = (previousSelectedElementIndex + iteration + 1) % sousTribunesDroiteList.length;
-		if (!(sousTribunesDroiteSelectedIndex.includes(nextSelectedElementIndexProposal))) {
+	  while(iteration < sousTribunesList.length - 1 && nextSelectedElementIndex == previousSelectedElementIndex) {
+		const nextSelectedElementIndexProposal = (previousSelectedElementIndex + iteration + 1) % sousTribunesList.length;
+		if (!(sousTribunesSelectedIndex.includes(nextSelectedElementIndexProposal))) {
 			nextSelectedElementIndex = nextSelectedElementIndexProposal; 
 		}
 		iteration ++;
 	  }
 	  
-	  const nextSoustribunesDroiteSelectedIndex = sousTribunesDroiteSelectedIndex.slice();
-	  nextSoustribunesDroiteSelectedIndex[sousTribuneNumber] = nextSelectedElementIndex;
-	  setSousTribunesDroiteSelectedIndex(nextSoustribunesDroiteSelectedIndex);
+	  const nextSoustribunesSelectedIndex = sousTribunesSelectedIndex.slice();
+	  nextSoustribunesSelectedIndex[sousTribuneNumber] = nextSelectedElementIndex;
+	  setSousTribunesSelectedIndex(nextSoustribunesSelectedIndex);
   }
-	
-  return (
-    <div class="sous-tribune-container">
-      <SousTribuneDroite key={0} 
-	  sousTribunesDroiteList={sousTribunesDroiteList} 
-	  sousTribuneDroiteSelectedIndex={sousTribunesDroiteSelectedIndex[0]}
-	  nextSousTribuneElement={() => nextSousTribuneElement(0)}
+  
+  const sousTribunes = sousTribunesSelectedIndex.map((sousTribuneSelectedIndex, index) => (
+	<SousTribune
+	  key={index} 
+	  className={className}
+	  sousTribunesList={sousTribunesList} 
+	  sousTribuneSelectedIndex={sousTribunesSelectedIndex[index]}
+	  nextSousTribuneElement={() => nextSousTribuneElement(index)}
 	  />
-      <SousTribuneDroite key={1} 
-	  sousTribunesDroiteList={sousTribunesDroiteList} 
-	  sousTribuneDroiteSelectedIndex={sousTribunesDroiteSelectedIndex[1]}
-	  nextSousTribuneElement={() => nextSousTribuneElement(1)}
-	  /> 
-	   <SousTribuneDroite key={2}
-	  sousTribunesDroiteList={sousTribunesDroiteList} 
-	  sousTribuneDroiteSelectedIndex={sousTribunesDroiteSelectedIndex[2]}
-	  nextSousTribuneElement={() => nextSousTribuneElement(2)}
-	  /> 
+  ));
+	
+  if (className == "sous-tribune") {
+	return ( 
+    <div class="sous-tribune-container">
+		{sousTribunes}
     </div>
-  );
+	)
+  }
+  else {
+	  return (
+		  <>
+		  {sousTribunes}
+		  </>
+	  );
+  }
+  
 }
 
 function SimpleClickableJournalEl({
@@ -70,23 +76,6 @@ function SimpleClickableJournalEl({
     <div className={className} onClick={onElementClicked}>
       <img src={imgSrc} />
     </div>
-  );
-}
-
-function SousTribuneBandeau({ imgSrc }) {
-  return (
-    <div class="demi-bandeau">
-      <img src={imgSrc} />
-    </div>
-  );
-}
-
-function SousTribunesBandeau() {
-  return (
-    <>
-      <SousTribuneBandeau imgSrc="https://i.imgur.com/SLMgYis.jpeg" />
-      <SousTribuneBandeau imgSrc="https://i.imgur.com/JKZaV6z.jpeg" />
-    </>
   );
 }
 
@@ -116,14 +105,28 @@ export default function Journal() {
   {id: 4, imgSrc: "https://i.imgur.com/Gjv406r.jpeg", target: "départemental"},
   {id: 5, imgSrc: "https://i.imgur.com/M7xZCut.jpeg", target: "départemental"},
   {id: 6, imgSrc: "https://i.imgur.com/GtcXCCO.jpeg", target: "départemental"},
-  ]
+  ];
   
   const [sousTribunesDroiteSelectedIndex, setSousTribunesDroiteSelectedIndex] = useState([0, 1, 2]);
+  
+  const sousTribunesBandeauList = [
+    {id: 1, imgSrc: "https://i.imgur.com/SLMgYis.jpeg", target: "local"},
+    {id: 2, imgSrc: "https://i.imgur.com/JKZaV6z.jpeg", target: "local"},
+    {id: 3, imgSrc: "https://i.imgur.com/CFYskfA.jpeg", target: "départemental"},
+    {id: 4, imgSrc: "https://i.imgur.com/Esj95IB.jpeg", target: "départemental"},
+  ];
+  
+  const [sousTribunesBandeauSelectedIndex, setSousTribunesBandeauSelectedIndex] = useState([0, 1]);
 
   return (
     <div class="page">
       <div class="article-container">
-        <SousTribunesBandeau/>
+        <SousTribunes 
+		  className="demi-bandeau"
+		  sousTribunesSelectedIndex={sousTribunesBandeauSelectedIndex}
+		  setSousTribunesSelectedIndex={setSousTribunesBandeauSelectedIndex}
+		  sousTribunesList={sousTribunesBandeauList}
+		  />
         <SimpleClickableJournalEl
           imgElList={manchettesElList}
           imgSelected={manchetteSelected}
@@ -136,10 +139,11 @@ export default function Journal() {
           imgSelected={ventreSelected}
           setImgSelected={setVentreSelected}
         />
-        <SousTribunesDroite 
-		  sousTribunesDroiteSelectedIndex={sousTribunesDroiteSelectedIndex}
-		  setSousTribunesDroiteSelectedIndex={setSousTribunesDroiteSelectedIndex}
-		  sousTribunesDroiteList={sousTribunesDroiteList}
+        <SousTribunes 
+		  className="sous-tribune"
+		  sousTribunesSelectedIndex={sousTribunesDroiteSelectedIndex}
+		  setSousTribunesSelectedIndex={setSousTribunesDroiteSelectedIndex}
+		  sousTribunesList={sousTribunesDroiteList}
 		  />
         <SimpleClickableJournalEl
           className="annonce"
