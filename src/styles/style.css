@@ -10,10 +10,15 @@ div {
   width: 21cm;
   height: 29.7cm;
   margin: auto;
-  overflow: auto;
-  background-color: wheat;
-  /*background-image: url("./fond.jpg");*/
   overflow: hidden;
+}
+
+.page.modifying {
+  background-color: wheat;
+}
+
+.page.validated {
+  background-color: white;	
 }
 
 .article-container {
@@ -63,7 +68,7 @@ div {
 	/* the following property-value set makes the img element as wide as its container */
 	width: 100%;
 	/* And the following property-value set displays the image to its original size, but hides everything outside the img element (and img's container) */
-	object-fit: none;
+	object-fit: contain;
 }
 
 .annonce {
@@ -85,4 +90,15 @@ div {
 	width: 100%;
 /* object fit: none to avoid redimension. Everything outside of the container (and img) is hidden*/
 	object-fit: contain;
+}
+
+.validation-panel {
+  width: 300px;
+  height: 300px;
+  background-color: white;
+
+}
+
+.publish-button {
+
 }
