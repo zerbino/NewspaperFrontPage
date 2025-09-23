@@ -110,7 +110,7 @@ export default function Journal() {
   const manchettesElList = [
   {id: 1, imgSrc: "https://i.imgur.com/LLTMG8o.png", target: "local"},
   {id: 2, imgSrc: "https://i.imgur.com/BgBxrBH.png", target: "départemental"},
-  {id: 3, imgSrc: "https://i.imgur.com/Cs5wCqh.jpeg", target: "national"},
+  {id: 3, imgSrc: "https://i.imgur.com/ELlCWgq.jpeg", target: "national"},
   ];
   const [manchetteSelected, setManchetteSelected] = useState(0);
 
