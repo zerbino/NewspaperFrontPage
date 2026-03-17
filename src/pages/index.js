@@ -108,47 +108,47 @@ export default function Journal() {
   const [gameStage, setGameStage] = useState("MODIFYING");
 	
   const manchettesElList = [
-  {id: 1, imgSrc: "https://i.imgur.com/LLTMG8o.png", target: "local"},
-  {id: 2, imgSrc: "https://i.imgur.com/BgBxrBH.png", target: "départemental"},
-  {id: 3, imgSrc: "https://i.imgur.com/ELlCWgq.jpeg", target: "national"},
+  {id: 1, imgSrc: "https://i.imgur.com/Rh3GY8r.png", target: "local"},
+  {id: 2, imgSrc: "https://i.imgur.com/WkzWpXe.png", target: "départemental"},
+  {id: 3, imgSrc: "https://i.imgur.com/Na15rfm.png", target: "national"},
   ];
   const [manchetteSelected, setManchetteSelected] = useState(0);
 
   const ventreSrcList = [
-    {id: 1, imgSrc:"https://i.imgur.com/26L1dWi.png", target: "local"},
-    {id: 2, imgSrc: "https://i.imgur.com/qjjJgbF.png", target: "départemental"},
-    {id: 3, imgSrc: "https://i.imgur.com/VK6Qun4.png", target: "national"},
+    {id: 1, imgSrc:"https://i.imgur.com/yh2iXmm.png", target: "local"},
+    {id: 2, imgSrc: "https://i.imgur.com/LGLXIOF.png", target: "départemental"},
+    {id: 3, imgSrc: "https://i.imgur.com/LkynANv.png", target: "national"},
   ];
   const [ventreSelected, setVentreSelected] = useState(1);
 
   const annonceSrcList = [
     {id: 1, imgSrc:"https://i.imgur.com/IH9XZx8.png", target: "local"},
-	{id: 2, imgSrc: "https://i.imgur.com/wvBaU5N.png", target: "départemental"},
+	{id: 2, imgSrc: "https://i.imgur.com/zGTKzEF.png", target: "départemental"},
 	{id: 3, imgSrc: "https://i.imgur.com/zwMaZMO.png", target: "national"},
   ];
   const [annonceSelected, setAnnonceSelected] = useState(2);
   
   const sousTribunesDroiteList = [
-  {id: 1, imgSrc: "https://i.imgur.com/me9FZMW.png", target: "local"},
-  {id: 2, imgSrc: "https://i.imgur.com/EleFqoT.png", target: "local"},
-  {id: 3, imgSrc: "https://i.imgur.com/0prT2E3.png", target: "local"},
-  {id: 4, imgSrc: "https://i.imgur.com/DUSNEPh.png", target: "départemental"},
-  {id: 5, imgSrc: "https://i.imgur.com/IwZT67O.png", target: "départemental"},
-  {id: 6, imgSrc: "https://i.imgur.com/NY74OXz.png", target: "départemental"},
-  {id: 7, imgSrc: "https://i.imgur.com/ls7vHeM.png", target: "national"},
-  {id: 8, imgSrc: "https://i.imgur.com/qaWG8NI.png", target: "national"},
-  {id: 9, imgSrc: "https://i.imgur.com/j7A5Hrt.png", target: "national"},
+  {id: 1, imgSrc: "https://i.imgur.com/K3ZS8Vl.png", target: "local"},
+  {id: 2, imgSrc: "https://i.imgur.com/H63uwBp.png", target: "local"},
+  {id: 3, imgSrc: "https://i.imgur.com/wjWSq2F.png", target: "local"},
+  {id: 4, imgSrc: "https://i.imgur.com/TF7qzxR.png", target: "départemental"},
+  {id: 5, imgSrc: "https://i.imgur.com/fJ4WF23.png", target: "départemental"},
+  {id: 6, imgSrc: "https://i.imgur.com/wgck6DL.png", target: "départemental"},
+  {id: 7, imgSrc: "https://i.imgur.com/SG2D0Yv.png", target: "national"},
+  {id: 8, imgSrc: "https://i.imgur.com/O8P6ynI.png", target: "national"},
+  {id: 9, imgSrc: "https://i.imgur.com/ioektDu.png", target: "national"},
   ];
   
   const [sousTribunesDroiteSelectedIndex, setSousTribunesDroiteSelectedIndex] = useState([0, 4, 8]);
   
   const sousTribunesBandeauList = [
-    {id: 1, imgSrc: "https://i.imgur.com/uIx4dO5.png", target: "local"},
-    {id: 2, imgSrc: "https://i.imgur.com/AUJBwKl.png", target: "local"},
-    {id: 3, imgSrc: "https://i.imgur.com/M0RKBHK.png", target: "départemental"},
-    {id: 4, imgSrc: "https://i.imgur.com/W2JDJ6B.png", target: "départemental"},
-    {id: 5, imgSrc: "https://i.imgur.com/dnzr0il.png", target: "national"},
-    {id: 6, imgSrc: "https://i.imgur.com/URQoRhy.png", target: "national"},
+    {id: 1, imgSrc: "https://i.imgur.com/CRalEfM.png", target: "local"},
+    {id: 2, imgSrc: "https://i.imgur.com/z4kr7vm.png", target: "local"},
+    {id: 3, imgSrc: "https://i.imgur.com/s87Ejp6.png", target: "départemental"},
+    {id: 4, imgSrc: "https://i.imgur.com/aOR4zT2.png", target: "départemental"},
+    {id: 5, imgSrc: "https://i.imgur.com/AeRGQTh.png", target: "national"},
+    {id: 6, imgSrc: "https://i.imgur.com/Xg8tVLi.png", target: "national"},
   ];
   
   const [sousTribunesBandeauSelectedIndex, setSousTribunesBandeauSelectedIndex] = useState([3, 4]);
